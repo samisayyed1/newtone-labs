@@ -51,9 +51,9 @@ export function Clients() {
           </h2>
         </SectionHead>
 
-        {/* Top wordmark marquee — quiet credibility strip */}
+        {/* Wordmark marquee — quiet, premium, no JS */}
         <div className="mt-10 overflow-hidden border-y border-ink/10 py-6 lg:mt-14">
-          <div className="marquee-track flex w-max items-center gap-12 whitespace-nowrap will-change-transform">
+          <div className="marquee-track flex w-max items-center gap-12 whitespace-nowrap">
             {[...CLIENTS, ...CLIENTS].map((c, i) => (
               <span
                 key={i}
@@ -66,41 +66,44 @@ export function Clients() {
           </div>
         </div>
 
-        {/* Editorial credit list — the real presentation */}
+        {/* Editorial credit list — wordmark on top, metadata below */}
         <ul className="mt-10 border-t border-ink/10 lg:mt-14">
           {CLIENTS.map((c, i) => (
             <li
               key={c.idx}
-              className="reveal-up group relative grid grid-cols-[auto_1fr_auto] items-baseline gap-x-6 gap-y-2 border-b border-ink/10 py-6 transition-colors duration-300 hover:bg-ink hover:text-cream sm:grid-cols-[64px_72px_1fr_auto_220px] sm:gap-x-8 sm:py-7 lg:py-9"
-              style={{ transitionDelay: `${i * 30}ms` }}
+              className="reveal-up group relative border-b border-ink/10 transition-colors duration-300 hover:bg-ink"
+              style={{ transitionDelay: `${i * 25}ms` }}
             >
-              <span className="font-mono text-[10px] uppercase tracking-eyebrow text-whisper transition-colors group-hover:text-cream/55">
-                {c.idx}
-              </span>
-              <span className="hidden font-mono text-[10px] uppercase tracking-eyebrow text-whisper transition-colors group-hover:text-cream/55 sm:block">
-                {c.year}
-              </span>
+              <div className="px-2 py-7 transition-transform duration-500 group-hover:translate-x-3 sm:px-4 sm:py-8 lg:px-6 lg:py-10">
+                <div className="flex items-end justify-between gap-6">
+                  <h3 className="font-display text-[clamp(36px,6.4vw,84px)] uppercase leading-[0.95] tracking-[-0.01em] text-ink transition-colors duration-300 group-hover:text-cream">
+                    {c.name}
+                  </h3>
+                  <span className="-translate-x-3 text-[clamp(18px,2vw,28px)] text-whisper opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-blood group-hover:opacity-100">
+                    →
+                  </span>
+                </div>
 
-              <h3 className="font-display text-[clamp(28px,5vw,68px)] uppercase leading-[0.96] tracking-[-0.01em] sm:col-span-1">
-                {c.name}
-                <span className="ml-3 inline-block translate-x-[-8px] align-middle text-[0.55em] text-whisper opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-blood group-hover:opacity-100">
-                  →
-                </span>
-              </h3>
-
-              <span className="hidden items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-blood sm:inline-flex">
-                {c.status ? (
-                  <>
-                    <span className="block h-[6px] w-[6px] animate-pulse rounded-full bg-blood" />
-                    {c.status}
-                  </>
-                ) : (
-                  <span className="text-whisper transition-colors group-hover:text-cream/40">—</span>
-                )}
-              </span>
-              <span className="col-span-3 font-mono text-[10px] uppercase tracking-eyebrow text-whisper transition-colors group-hover:text-cream/55 sm:col-span-1 sm:text-right">
-                {c.industry}
-              </span>
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-eyebrow text-whisper transition-colors duration-300 group-hover:text-cream/55">
+                  <span className="inline-flex items-center gap-3">
+                    <span className="text-ink transition-colors duration-300 group-hover:text-cream">
+                      {c.idx}
+                    </span>
+                    <span className="opacity-50">/</span>
+                    <span>{c.year}</span>
+                    <span className="opacity-50">·</span>
+                    <span>{c.industry}</span>
+                  </span>
+                  {c.status ? (
+                    <span className="inline-flex items-center gap-2 text-blood">
+                      <span className="block h-[6px] w-[6px] animate-pulse rounded-full bg-blood" />
+                      {c.status}
+                    </span>
+                  ) : (
+                    <span className="opacity-60">—</span>
+                  )}
+                </div>
+              </div>
             </li>
           ))}
         </ul>
@@ -108,10 +111,8 @@ export function Clients() {
 
       <style jsx>{`
         .marquee-track {
-          animation: marquee 40s linear infinite;
-        }
-        .group:hover .marquee-track {
-          animation-play-state: paused;
+          animation: marquee 50s linear infinite;
+          will-change: transform;
         }
         @keyframes marquee {
           from {
