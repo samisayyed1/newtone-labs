@@ -30,7 +30,7 @@ export function Contact() {
   return (
     <section ref={ref} id="contact" className="relative bg-blood text-ink">
       <div className="mx-auto max-w-page px-6 pb-16 pt-20 sm:px-8 lg:px-20 lg:pt-28">
-        <h2 className="font-display text-[clamp(72px,15vw,260px)] uppercase leading-[0.98] tracking-[-0.02em]">
+        <h2 className="font-display text-[clamp(72px,15vw,260px)] uppercase leading-[0.98] tracking-[-0.02em] text-ink">
           <span className="block">
             <RevealLine>Let&apos;s</RevealLine>{" "}
             <RevealLine romance>
@@ -50,7 +50,7 @@ export function Contact() {
           <form
             onSubmit={onSubmit}
             noValidate
-            className="reveal-up mt-16 grid max-w-[1100px] grid-cols-1 gap-10 border-t border-ink/30 pt-10 lg:mt-20 lg:gap-12 lg:pt-14"
+            className="reveal-up mt-16 grid max-w-[1100px] grid-cols-1 gap-10 border-t border-cream/30 pt-10 lg:mt-20 lg:gap-12 lg:pt-14"
           >
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
               <Field name="name" label="Full name" required error={errors.name} placeholder="Jane Doe" />
@@ -69,17 +69,17 @@ export function Contact() {
             <div className="flex flex-wrap items-center justify-between gap-6 pt-2">
               <button
                 type="submit"
-                className="group inline-flex items-center gap-3 rounded-full bg-bone px-7 py-5 font-display text-[16px] uppercase tracking-[0.06em] text-ink transition-all duration-300 hover:bg-ink hover:text-cream"
+                className="group inline-flex items-center gap-3 rounded-full bg-cream px-7 py-5 font-display text-[16px] uppercase tracking-[0.06em] text-ink transition-all duration-300 hover:bg-ink hover:text-cream"
               >
                 Send brief <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </button>
-              <p className="max-w-[36ch] font-mono text-[10px] uppercase tracking-eyebrow text-ink/70">
+              <p className="max-w-[36ch] font-mono text-[10px] uppercase tracking-eyebrow text-cream/85">
                 By submitting, you agree we may contact you about your enquiry.
               </p>
             </div>
           </form>
         ) : (
-          <div className="reveal-up mt-16 max-w-[640px] border-t border-ink/30 pt-10 lg:mt-20 lg:pt-14">
+          <div className="reveal-up mt-16 max-w-[640px] border-t border-cream/30 pt-10 text-cream lg:mt-20 lg:pt-14">
             <div className="font-display text-[40px] uppercase leading-[1.05] sm:text-[56px]">
               <span className="font-romance italic font-normal lowercase">sent.</span>
             </div>
@@ -90,19 +90,19 @@ export function Contact() {
           </div>
         )}
 
-        <div className="mt-20 grid grid-cols-1 gap-12 border-t border-ink/30 pt-10 lg:mt-28 lg:grid-cols-3 lg:gap-16">
+        <div className="mt-20 grid grid-cols-1 gap-12 border-t border-cream/30 pt-10 lg:mt-28 lg:grid-cols-3 lg:gap-16">
           <FooterCol label="Email">
-            <a className="block hover:underline" href="mailto:info@newtone.design">
+            <a className="block text-cream hover:underline" href="mailto:info@newtone.design">
               info@newtone.<br />design
             </a>
           </FooterCol>
           <FooterCol label="Phone / WhatsApp">
-            <a className="block hover:underline" href="tel:+918356047062">
+            <a className="block text-cream hover:underline" href="tel:+918356047062">
               +91 83560<br />47062
             </a>
           </FooterCol>
           <FooterCol label="Studio">
-            <p className="text-[16px] font-medium leading-[1.5] normal-case">
+            <p className="text-[16px] font-medium leading-[1.5] normal-case text-cream">
               Newtone Creative Labs<br />
               Nerul, Navi Mumbai 400706<br />
               India · IST (UTC+5:30)
@@ -110,12 +110,12 @@ export function Contact() {
           </FooterCol>
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-3 border-t border-ink/30 pt-6 font-mono text-[10px] uppercase tracking-eyebrow text-ink/70 sm:flex-row sm:items-center">
+        <div className="mt-16 flex flex-col items-start justify-between gap-3 border-t border-cream/30 pt-6 font-mono text-[10px] uppercase tracking-eyebrow text-cream/85 sm:flex-row sm:items-center">
           <span>© 2026 Newtone Creative Labs Pvt. Ltd.</span>
           <span className="flex gap-6">
-            <a href="https://behance.net" className="hover:text-ink">Behance →</a>
-            <a href="https://linkedin.com" className="hover:text-ink">LinkedIn →</a>
-            <a href="https://instagram.com" className="hover:text-ink">Instagram →</a>
+            <a href="https://behance.net" className="hover:text-cream">Behance →</a>
+            <a href="https://linkedin.com" className="hover:text-cream">LinkedIn →</a>
+            <a href="https://instagram.com" className="hover:text-cream">Instagram →</a>
           </span>
         </div>
       </div>
@@ -142,12 +142,12 @@ function Field({
 }) {
   const id = `f-${name}`;
   const baseInput =
-    "block w-full bg-transparent px-0 py-3 text-[18px] text-ink placeholder:text-ink/40 outline-none transition-[border-color,border-width] duration-300";
-  const border = error ? "border-bone" : "border-ink/40";
-  const focus = "focus:border-bone focus:border-b-2";
+    "block w-full bg-transparent px-0 py-3 text-[18px] text-cream placeholder:text-cream/45 caret-cream outline-none transition-[border-color,border-width] duration-300";
+  const border = error ? "border-cream" : "border-cream/45";
+  const focus = "focus:border-cream focus:border-b-2";
   return (
     <label htmlFor={id} className="block">
-      <span className="block font-mono text-[10px] uppercase tracking-eyebrow text-ink">
+      <span className="block font-mono text-[10px] uppercase tracking-eyebrow text-cream">
         {label}
         {required && <span className="ml-1">*</span>}
       </span>
@@ -177,8 +177,8 @@ function Field({
 function FooterCol({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <div className="mb-4 font-mono text-[10px] uppercase tracking-eyebrow text-ink/70">{label}</div>
-      <div className="font-display text-[clamp(22px,2.4vw,30px)] uppercase leading-[1.15] tracking-tight">
+      <div className="mb-4 font-mono text-[10px] uppercase tracking-eyebrow text-cream/80">{label}</div>
+      <div className="font-display text-[clamp(22px,2.4vw,30px)] uppercase leading-[1.15] tracking-tight text-cream">
         {children}
       </div>
     </div>

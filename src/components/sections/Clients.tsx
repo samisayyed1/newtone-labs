@@ -4,25 +4,26 @@ import { useReveal } from "@/components/motion/RevealHooks";
 import { RevealLine, SectionHead } from "@/components/ui/SectionHead";
 
 type Client = {
-  name: [string, string?];
-  ind: string;
+  idx: string;
+  year: string;
+  name: string;
+  industry: string;
   status?: string;
-  highlight?: boolean;
 };
 
 const CLIENTS: Client[] = [
-  { name: ["Arkose", "Labs"], ind: "Cybersecurity · USA", status: "Active · 6 yrs" },
-  { name: ["Anomali"], ind: "Cybersecurity · USA", status: "Active" },
-  { name: ["Simility", "by PayPal"], ind: "Fintech · USA" },
-  { name: ["Monnai"], ind: "Fintech · USA" },
-  { name: ["Bank of", "Ireland"], ind: "Banking · IE" },
-  { name: ["Aditya Birla", "Hospital"], ind: "Healthcare · IN" },
-  { name: ["Leelavati", "Hospital"], ind: "Healthcare · IN" },
-  { name: ["Supreme", "Furniture"], ind: "Home decor · IN" },
-  { name: ["Maharaja", "Bhog"], ind: "F&B · IN" },
-  { name: ["Five Fat", "Monks"], ind: "F&B · IN" },
-  { name: ["Persian", "Darbar"], ind: "F&B · IN", highlight: true },
-  { name: ["Aquavera"], ind: "FMCG · IN" },
+  { idx: "01", year: "2018", name: "Arkose Labs", industry: "Cybersecurity · USA", status: "Active · 6 yrs" },
+  { idx: "02", year: "2020", name: "Anomali", industry: "Cybersecurity · USA", status: "Active" },
+  { idx: "03", year: "2021", name: "Simility by PayPal", industry: "Fintech · USA" },
+  { idx: "04", year: "2022", name: "Monnai", industry: "Fintech · USA" },
+  { idx: "05", year: "2022", name: "Bank of Ireland", industry: "Banking · IE" },
+  { idx: "06", year: "2023", name: "Aditya Birla Hospital", industry: "Healthcare · IN" },
+  { idx: "07", year: "2023", name: "Leelavati Hospital", industry: "Healthcare · IN" },
+  { idx: "08", year: "2024", name: "Supreme Furniture", industry: "Home decor · IN" },
+  { idx: "09", year: "2024", name: "Maharaja Bhog", industry: "F&B · IN" },
+  { idx: "10", year: "2024", name: "Five Fat Monks", industry: "F&B · IN" },
+  { idx: "11", year: "2025", name: "Persian Darbar", industry: "F&B · IN", status: "Active" },
+  { idx: "12", year: "2025", name: "Aquavera", industry: "FMCG · IN" },
 ];
 
 export function Clients() {
@@ -38,7 +39,7 @@ export function Clients() {
             <span className="mt-2 block">
               <RevealLine>shipping to</RevealLine>{" "}
               <RevealLine romance>
-                <span className="font-romance italic font-normal lowercase">30,000+</span>
+                <span className="font-romance font-normal italic lowercase">30,000+</span>
               </RevealLine>
             </span>
             <span className="mt-2 block">
@@ -50,39 +51,82 @@ export function Clients() {
           </h2>
         </SectionHead>
 
-        <div className="reveal-up mt-10 grid grid-cols-1 border-l border-t border-whisper/30 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
-          {CLIENTS.map((c, i) => (
-            <article
-              key={i}
-              className={`group relative flex min-h-[200px] flex-col justify-between gap-8 border-b border-r border-whisper/30 p-7 transition-all duration-300 lg:p-9 ${
-                c.highlight ? "bg-bone text-blood" : "bg-cream text-ink hover:bg-ink hover:text-cream"
-              }`}
-            >
-              {c.status && (
-                <span className="absolute right-5 top-5 inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-eyebrow text-blood">
-                  <span className="block h-[5px] w-[5px] animate-pulse rounded-full bg-blood" />
-                  {c.status}
-                </span>
-              )}
-              <div />
-              <div>
-                <h3 className="font-display text-[26px] uppercase leading-[1.05] tracking-tight">
-                  {c.name[0]}
-                  {c.name[1] && (
-                    <>
-                      <br />
-                      {c.name[1]}
-                    </>
-                  )}
-                </h3>
-                <p className="mt-3 font-mono text-[10px] uppercase tracking-eyebrow text-whisper transition-colors group-hover:text-cream/55">
-                  {c.ind}
-                </p>
-              </div>
-            </article>
-          ))}
+        {/* Top wordmark marquee — quiet credibility strip */}
+        <div className="mt-10 overflow-hidden border-y border-ink/10 py-6 lg:mt-14">
+          <div className="marquee-track flex w-max items-center gap-12 whitespace-nowrap will-change-transform">
+            {[...CLIENTS, ...CLIENTS].map((c, i) => (
+              <span
+                key={i}
+                className="font-display text-[20px] uppercase leading-none tracking-tight text-ink/70"
+              >
+                {c.name}
+                <span className="mx-12 inline-block h-[6px] w-[6px] translate-y-[-3px] rounded-full bg-blood" />
+              </span>
+            ))}
+          </div>
         </div>
+
+        {/* Editorial credit list — the real presentation */}
+        <ul className="mt-10 border-t border-ink/10 lg:mt-14">
+          {CLIENTS.map((c, i) => (
+            <li
+              key={c.idx}
+              className="reveal-up group relative grid grid-cols-[auto_1fr_auto] items-baseline gap-x-6 gap-y-2 border-b border-ink/10 py-6 transition-colors duration-300 hover:bg-ink hover:text-cream sm:grid-cols-[64px_72px_1fr_auto_220px] sm:gap-x-8 sm:py-7 lg:py-9"
+              style={{ transitionDelay: `${i * 30}ms` }}
+            >
+              <span className="font-mono text-[10px] uppercase tracking-eyebrow text-whisper transition-colors group-hover:text-cream/55">
+                {c.idx}
+              </span>
+              <span className="hidden font-mono text-[10px] uppercase tracking-eyebrow text-whisper transition-colors group-hover:text-cream/55 sm:block">
+                {c.year}
+              </span>
+
+              <h3 className="font-display text-[clamp(28px,5vw,68px)] uppercase leading-[0.96] tracking-[-0.01em] sm:col-span-1">
+                {c.name}
+                <span className="ml-3 inline-block translate-x-[-8px] align-middle text-[0.55em] text-whisper opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-blood group-hover:opacity-100">
+                  →
+                </span>
+              </h3>
+
+              <span className="hidden items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-blood sm:inline-flex">
+                {c.status ? (
+                  <>
+                    <span className="block h-[6px] w-[6px] animate-pulse rounded-full bg-blood" />
+                    {c.status}
+                  </>
+                ) : (
+                  <span className="text-whisper transition-colors group-hover:text-cream/40">—</span>
+                )}
+              </span>
+              <span className="col-span-3 font-mono text-[10px] uppercase tracking-eyebrow text-whisper transition-colors group-hover:text-cream/55 sm:col-span-1 sm:text-right">
+                {c.industry}
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
+
+      <style jsx>{`
+        .marquee-track {
+          animation: marquee 40s linear infinite;
+        }
+        .group:hover .marquee-track {
+          animation-play-state: paused;
+        }
+        @keyframes marquee {
+          from {
+            transform: translate3d(0, 0, 0);
+          }
+          to {
+            transform: translate3d(-50%, 0, 0);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track {
+            animation: none;
+          }
+        }
+      `}</style>
     </section>
   );
 }
