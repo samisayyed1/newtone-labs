@@ -45,7 +45,7 @@ function Counter({ to, suffix }: { to: number; suffix: string }) {
 export function Stats() {
   return (
     <section className="relative bg-cream">
-      <div className="mx-auto max-w-page px-6 pb-32 sm:px-8 lg:px-20 lg:pb-40">
+      <div className="mx-auto max-w-page px-6 pb-20 sm:px-8 lg:px-20 lg:pb-28">
         <div className="grid gap-12 sm:grid-cols-2 lg:gap-16">
           {STATS.map((s, i) => (
             <div

@@ -44,7 +44,7 @@ export function WhyUs() {
   const ref = useReveal<HTMLElement>();
   return (
     <section ref={ref} id="why" className="relative bg-ink text-cream">
-      <div className="mx-auto max-w-page px-6 pt-32 sm:px-8 lg:px-20 lg:pt-40">
+      <div className="mx-auto max-w-page px-6 pt-20 sm:px-8 lg:px-20 lg:pt-28">
         <SectionHead index="06" label="Why us" dark>
           <h2 className="font-display text-[clamp(40px,7vw,96px)] uppercase leading-[1.02] tracking-[-0.01em]">
             <span className="block">
@@ -62,7 +62,7 @@ export function WhyUs() {
           </h2>
         </SectionHead>
 
-        <div className="mt-16 lg:mt-24">
+        <div className="mt-10 lg:mt-14">
           {ROWS.map((r, i) => (
             <div
               key={r.num}
@@ -89,7 +89,7 @@ export function WhyUs() {
         </div>
       </div>
       {/* red handoff to contact */}
-      <div className="mt-24 h-[60px] bg-blood lg:mt-32" aria-hidden />
+      <div className="mt-16 h-[60px] bg-blood lg:mt-20" aria-hidden />
     </section>
   );
 }

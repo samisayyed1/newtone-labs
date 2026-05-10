@@ -19,7 +19,7 @@ export function Services() {
   const ref = useReveal<HTMLElement>();
   return (
     <section ref={ref} id="services" className="relative bg-ink text-cream">
-      <div className="mx-auto max-w-page px-6 py-32 sm:px-8 lg:px-20 lg:py-40">
+      <div className="mx-auto max-w-page px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
         <SectionHead index="02" label="Services" dark>
           <h2 className="font-display text-[clamp(40px,7vw,96px)] uppercase leading-[1.02] tracking-[-0.01em]">
             <span className="block">
@@ -40,7 +40,7 @@ export function Services() {
           </h2>
         </SectionHead>
 
-        <div className="mt-16 grid grid-cols-1 border-t border-cream/15 sm:grid-cols-2 lg:mt-24 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 border-t border-cream/15 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
           {SERVICES.map((s) => (
             <ServiceCard key={s.num} {...s} />
           ))}

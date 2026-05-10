@@ -30,7 +30,7 @@ export function Contact() {
 
   return (
     <section ref={ref} id="contact" className="relative bg-blood text-ink">
-      <div className="mx-auto max-w-page px-6 pb-20 pt-32 sm:px-8 lg:px-20 lg:pt-40">
+      <div className="mx-auto max-w-page px-6 pb-16 pt-20 sm:px-8 lg:px-20 lg:pt-28">
         <h2 className="font-display text-[clamp(72px,15vw,260px)] uppercase leading-[0.98] tracking-[-0.02em]">
           <span className="block">
             <RevealLine>Let&apos;s</RevealLine>{" "}

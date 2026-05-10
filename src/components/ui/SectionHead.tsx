@@ -12,7 +12,7 @@ type Props = {
 export function SectionHead({ index, label, children, dark = false }: Props) {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <header ref={ref} className={`relative border-t pt-6 sm:pt-8 ${dark ? "border-white/15" : "border-ink/10"}`}>
+    <header ref={ref} className={`relative border-t pt-5 sm:pt-6 ${dark ? "border-white/15" : "border-ink/10"}`}>
       <div
         className={`flex items-center justify-between gap-6 font-mono text-[10px] uppercase tracking-eyebrow ${
           dark ? "text-cream/55" : "text-whisper"
@@ -24,7 +24,7 @@ export function SectionHead({ index, label, children, dark = false }: Props) {
           {label}
         </span>
       </div>
-      <div className="mt-8 sm:mt-12">{children}</div>
+      <div className="mt-6 sm:mt-8">{children}</div>
     </header>
   );
 }

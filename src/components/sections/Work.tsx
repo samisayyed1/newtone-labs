@@ -16,7 +16,7 @@ export function Work() {
   const ref = useReveal<HTMLElement>();
   return (
     <section ref={ref} id="work" className="relative bg-cream">
-      <div className="mx-auto max-w-page px-6 py-32 sm:px-8 lg:px-20 lg:py-40">
+      <div className="mx-auto max-w-page px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
         <SectionHead index="03" label="Selected work">
           <h2 className="font-display text-[clamp(40px,7vw,96px)] uppercase leading-[1.02] tracking-[-0.01em] text-ink">
             <span className="block">
@@ -35,7 +35,7 @@ export function Work() {
           </h2>
         </SectionHead>
 
-        <div className="mt-16 grid grid-cols-1 gap-12 lg:mt-24 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-16">
+        <div className="mt-10 grid grid-cols-1 gap-10 lg:mt-14 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-14">
           {WORK.map((w, i) => (
             <article key={i} className={`reveal-up ${w.span}`} data-cursor="media">
               <figure

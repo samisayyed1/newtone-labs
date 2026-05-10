@@ -14,7 +14,7 @@ export function Process() {
   const ref = useReveal<HTMLElement>();
   return (
     <section ref={ref} id="process" className="relative bg-cream">
-      <div className="mx-auto max-w-page px-6 py-32 sm:px-8 lg:px-20 lg:py-40">
+      <div className="mx-auto max-w-page px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
         <SectionHead index="04" label="Process">
           <h2 className="font-display text-[clamp(40px,7vw,96px)] uppercase leading-[1.02] tracking-[-0.01em] text-ink">
             <span className="block">
@@ -33,7 +33,7 @@ export function Process() {
           </h2>
         </SectionHead>
 
-        <div className="relative mt-20 grid gap-10 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4 lg:gap-0">
+        <div className="relative mt-12 grid gap-10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-0">
           {STEPS.map((s, i) => (
             <div
               key={s.num}

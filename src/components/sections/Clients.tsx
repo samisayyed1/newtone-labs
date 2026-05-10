@@ -29,7 +29,7 @@ export function Clients() {
   const ref = useReveal<HTMLElement>();
   return (
     <section ref={ref} id="clients" className="relative bg-cream">
-      <div className="mx-auto max-w-page px-6 py-32 sm:px-8 lg:px-20 lg:py-40">
+      <div className="mx-auto max-w-page px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
         <SectionHead index="05" label="Clients">
           <h2 className="font-display text-[clamp(40px,7vw,96px)] uppercase leading-[1.02] tracking-[-0.01em] text-ink">
             <span className="block">
@@ -50,7 +50,7 @@ export function Clients() {
           </h2>
         </SectionHead>
 
-        <div className="reveal-up mt-16 grid grid-cols-1 border-l border-t border-whisper/30 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
+        <div className="reveal-up mt-10 grid grid-cols-1 border-l border-t border-whisper/30 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
           {CLIENTS.map((c, i) => (
             <article
               key={i}
