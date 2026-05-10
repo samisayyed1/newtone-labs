@@ -3,7 +3,7 @@
 import { useReveal } from "@/components/motion/RevealHooks";
 import { RevealLine, SectionHead } from "@/components/ui/SectionHead";
 
-type Client = {
+type FeaturedClient = {
   idx: string;
   year: string;
   name: string;
@@ -11,7 +11,22 @@ type Client = {
   status?: string;
 };
 
-const FEATURED: Client[] = [
+const ALL_CLIENTS: string[] = [
+  "Arkose Labs",
+  "Anomali",
+  "Simility by PayPal",
+  "Monnai",
+  "Bank of Ireland",
+  "Aditya Birla Hospital",
+  "Leelavati Hospital",
+  "Supreme Furniture",
+  "Maharaja Bhog",
+  "Five Fat Monks",
+  "Persian Darbar",
+  "Aquavera",
+];
+
+const FEATURED: FeaturedClient[] = [
   { idx: "01", year: "2018", name: "Arkose Labs", industry: "Cybersecurity · USA", status: "Active · 6 yrs" },
   { idx: "02", year: "2020", name: "Anomali", industry: "Cybersecurity · USA", status: "Active" },
   { idx: "03", year: "2021", name: "Simility by PayPal", industry: "Fintech · USA" },
@@ -47,30 +62,29 @@ export function Clients() {
           </h2>
         </SectionHead>
 
-        {/* Wordmark marquee — quiet, premium, no JS */}
-        <div className="mt-10 overflow-hidden border-y border-ink/10 py-6 lg:mt-14">
-          <div className="marquee-track flex w-max items-center gap-12 whitespace-nowrap">
-            {[...FEATURED, ...FEATURED, ...FEATURED].map((c, i) => (
-              <span
-                key={i}
-                className="font-display text-[20px] uppercase leading-none tracking-tight text-ink/70"
-              >
-                {c.name}
-                <span className="mx-12 inline-block h-[6px] w-[6px] translate-y-[-3px] rounded-full bg-blood" />
+        {/* Wordmark marquee — every client, scrolling on a 60s loop */}
+        <div className="mt-12 overflow-hidden border-y border-ink/10 py-7 lg:mt-16">
+          <div className="marquee-track flex w-max items-center whitespace-nowrap">
+            {[...ALL_CLIENTS, ...ALL_CLIENTS].map((name, i) => (
+              <span key={i} className="flex items-center">
+                <span className="font-display text-[22px] uppercase leading-none tracking-tight text-ink/70">
+                  {name}
+                </span>
+                <span className="mx-10 inline-block h-[6px] w-[6px] rounded-full bg-blood" />
               </span>
             ))}
           </div>
         </div>
 
-        {/* Editorial credit list — selected accounts */}
-        <ul className="mt-10 border-t border-ink/10 lg:mt-14">
+        {/* Editorial credit list — five flagship accounts + closer */}
+        <ul className="mt-12 border-t border-ink/10 lg:mt-16">
           {FEATURED.map((c, i) => (
             <li
               key={c.idx}
               className="reveal-up group relative border-b border-ink/10 transition-colors duration-300 hover:bg-ink"
               style={{ transitionDelay: `${i * 25}ms` }}
             >
-              <div className="px-2 py-7 transition-transform duration-500 group-hover:translate-x-3 sm:px-4 sm:py-8 lg:px-6 lg:py-10">
+              <div className="px-2 py-8 transition-transform duration-500 group-hover:translate-x-3 sm:px-4 sm:py-9 lg:px-6 lg:py-10">
                 <h3 className="font-display text-[clamp(36px,6.4vw,84px)] uppercase leading-[0.95] tracking-[-0.01em] text-ink transition-colors duration-300 group-hover:text-cream">
                   {c.name}
                 </h3>
@@ -98,9 +112,9 @@ export function Clients() {
             </li>
           ))}
 
-          {/* Closing row — "and many more" */}
+          {/* Closing row — same padding rhythm, no hover invert */}
           <li className="reveal-up border-b border-ink/10">
-            <div className="px-2 py-7 sm:px-4 sm:py-8 lg:px-6 lg:py-10">
+            <div className="px-2 py-8 sm:px-4 sm:py-9 lg:px-6 lg:py-10">
               <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
                 <h3 className="font-display text-[clamp(28px,4.4vw,56px)] uppercase leading-[0.95] tracking-[-0.01em] text-whisper">
                   &amp; <span className="font-romance italic font-normal lowercase text-ink">many</span> more
@@ -116,7 +130,7 @@ export function Clients() {
 
       <style jsx>{`
         .marquee-track {
-          animation: marquee 50s linear infinite;
+          animation: marquee 60s linear infinite;
           will-change: transform;
         }
         @keyframes marquee {
@@ -124,7 +138,7 @@ export function Clients() {
             transform: translate3d(0, 0, 0);
           }
           to {
-            transform: translate3d(-33.3333%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
           }
         }
         @media (prefers-reduced-motion: reduce) {
