@@ -99,23 +99,19 @@ export function Process() {
 
                 <p className="mt-4 max-w-[30ch] text-[14px] leading-[1.65] text-whisper">{s.desc}</p>
 
-                {/* Activity histogram — bars breathe continuously, never settle */}
-                <div className="mt-6 flex h-8 items-end gap-1.5" aria-hidden>
-                  {[0, 1, 2, 3, 4, 5, 6].map((b) => (
+                {/* Static progress indicator — fills to step's position on scroll-in */}
+                <div className="mt-6 inline-flex items-center gap-3">
+                  <span className="block h-px w-16 bg-ink/15">
                     <span
-                      key={b}
-                      className={`process-bar block w-2 origin-bottom rounded-[1px] ${
-                        b === 3 ? "bg-blood" : "bg-ink/45"
-                      }`}
+                      className="process-progress block h-px bg-blood"
                       style={{
-                        height: "100%",
-                        animationDelay: `${i * 0.2 + b * 0.14}s`,
-                        animationDuration: `${1.8 + (b % 4) * 0.35}s`,
+                        width: `${((i + 1) / STEPS.length) * 100}%`,
+                        transitionDelay: `${400 + i * 120}ms`,
                       }}
                     />
-                  ))}
-                  <span className="ml-3 self-center font-mono text-[9px] uppercase tracking-eyebrow text-whisper">
-                    Cycle {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-eyebrow text-whisper">
+                    Step {s.num} <span className="opacity-50">/</span> 04
                   </span>
                 </div>
               </div>
@@ -154,29 +150,20 @@ export function Process() {
           border-color: #e63946;
           transform: translateY(-50%) scale(1.15);
         }
-        .process-bar {
-          animation: barBreathe 2.4s ease-in-out infinite;
-          will-change: transform, opacity;
+        .process-progress {
+          transform: scaleX(0);
+          transform-origin: left center;
+          transition: transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
         }
-        @keyframes barBreathe {
-          0%, 100% {
-            transform: scaleY(0.32);
-            opacity: 0.55;
-          }
-          50% {
-            transform: scaleY(1);
-            opacity: 1;
-          }
+        :global(.is-in) .process-progress {
+          transform: scaleX(1);
         }
         @media (prefers-reduced-motion: reduce) {
           .process-line,
-          .process-dot {
+          .process-dot,
+          .process-progress {
             transition: none;
             transform: none;
-          }
-          .process-bar {
-            animation: none;
-            transform: scaleY(0.7);
           }
         }
       `}</style>
