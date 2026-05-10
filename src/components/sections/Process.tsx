@@ -119,14 +119,14 @@ export function Process() {
           </div>
         </div>
 
-        {/* Closer — no day or timezone references */}
+        {/* Closer — editorial signature */}
         <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 pt-6 font-mono text-[10px] uppercase tracking-eyebrow text-whisper lg:mt-16">
           <span>
-            An <span className="text-ink">always-on</span> cadence.
+            The same <span className="text-ink">shape</span>, every cycle.
           </span>
           <span className="inline-flex items-center gap-2 text-blood">
             <span className="block h-[6px] w-[6px] animate-pulse rounded-full bg-blood" />
-            12 active retainers
+            Currently shipping
           </span>
         </div>
       </div>
