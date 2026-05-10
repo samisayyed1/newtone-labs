@@ -142,12 +142,12 @@ function Field({
 }) {
   const id = `f-${name}`;
   const baseInput =
-    "block w-full bg-transparent px-0 py-3 text-[18px] text-cream placeholder:text-cream/45 caret-cream outline-none transition-[border-color,border-width] duration-300";
+    "block w-full bg-transparent px-0 py-4 text-[22px] font-medium text-cream placeholder:font-normal placeholder:text-cream/55 caret-cream outline-none transition-[border-color,border-width] duration-300 sm:text-[24px]";
   const border = error ? "border-cream" : "border-cream/45";
   const focus = "focus:border-cream focus:border-b-2";
   return (
     <label htmlFor={id} className="block">
-      <span className="block font-mono text-[10px] uppercase tracking-eyebrow text-cream">
+      <span className="block font-mono text-[11px] uppercase tracking-eyebrow text-cream sm:text-[12px]">
         {label}
         {required && <span className="ml-1">*</span>}
       </span>

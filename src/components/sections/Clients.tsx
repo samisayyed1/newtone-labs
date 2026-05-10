@@ -75,14 +75,9 @@ export function Clients() {
               style={{ transitionDelay: `${i * 25}ms` }}
             >
               <div className="px-2 py-7 transition-transform duration-500 group-hover:translate-x-3 sm:px-4 sm:py-8 lg:px-6 lg:py-10">
-                <div className="flex items-end justify-between gap-6">
-                  <h3 className="font-display text-[clamp(36px,6.4vw,84px)] uppercase leading-[0.95] tracking-[-0.01em] text-ink transition-colors duration-300 group-hover:text-cream">
-                    {c.name}
-                  </h3>
-                  <span className="-translate-x-3 text-[clamp(18px,2vw,28px)] text-whisper opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-blood group-hover:opacity-100">
-                    →
-                  </span>
-                </div>
+                <h3 className="font-display text-[clamp(36px,6.4vw,84px)] uppercase leading-[0.95] tracking-[-0.01em] text-ink transition-colors duration-300 group-hover:text-cream">
+                  {c.name}
+                </h3>
 
                 <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-eyebrow text-whisper transition-colors duration-300 group-hover:text-cream/55">
                   <span className="inline-flex items-center gap-3">
