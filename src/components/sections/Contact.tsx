@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useReveal } from "@/components/motion/RevealHooks";
-import { MagneticButton } from "@/components/motion/MagneticButton";
 import { RevealLine } from "@/components/ui/SectionHead";
 
 export function Contact() {
@@ -35,24 +34,23 @@ export function Contact() {
           <span className="block">
             <RevealLine>Let&apos;s</RevealLine>{" "}
             <RevealLine romance>
-              <span className="font-romance italic font-normal lowercase">make</span>
+              <span className="font-romance font-normal italic lowercase">make</span>
             </RevealLine>
           </span>
           <span className="mt-2 block">
             <RevealLine>something</RevealLine>{" "}
             <RevealLine romance>
-              <span className="font-romance italic font-normal lowercase">loud</span>
+              <span className="font-romance font-normal italic lowercase">loud</span>
             </RevealLine>
             .
           </span>
         </h2>
 
-        {/* form */}
         {!sent ? (
           <form
             onSubmit={onSubmit}
             noValidate
-            className="reveal-up mt-20 grid max-w-[1100px] grid-cols-1 gap-10 border-t border-ink/30 pt-12 lg:mt-24 lg:gap-12 lg:pt-16"
+            className="reveal-up mt-16 grid max-w-[1100px] grid-cols-1 gap-10 border-t border-ink/30 pt-10 lg:mt-20 lg:gap-12 lg:pt-14"
           >
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
               <Field name="name" label="Full name" required error={errors.name} placeholder="Jane Doe" />
@@ -68,20 +66,20 @@ export function Contact() {
               placeholder="A few lines on the deliverable, channels, and timing."
               textarea
             />
-            <div className="flex flex-wrap items-center justify-between gap-6 pt-4">
-              <MagneticButton
+            <div className="flex flex-wrap items-center justify-between gap-6 pt-2">
+              <button
                 type="submit"
-                className="inline-flex items-center gap-3 rounded-full bg-bone px-7 py-5 font-display text-[16px] uppercase tracking-[0.06em] text-ink transition-colors duration-300 hover:bg-ink hover:text-cream"
+                className="group inline-flex items-center gap-3 rounded-full bg-bone px-7 py-5 font-display text-[16px] uppercase tracking-[0.06em] text-ink transition-all duration-300 hover:bg-ink hover:text-cream"
               >
-                Send brief <span>→</span>
-              </MagneticButton>
+                Send brief <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </button>
               <p className="max-w-[36ch] font-mono text-[10px] uppercase tracking-eyebrow text-ink/70">
                 By submitting, you agree we may contact you about your enquiry.
               </p>
             </div>
           </form>
         ) : (
-          <div className="reveal-up mt-20 max-w-[640px] border-t border-ink/30 pt-12 lg:mt-24 lg:pt-16">
+          <div className="reveal-up mt-16 max-w-[640px] border-t border-ink/30 pt-10 lg:mt-20 lg:pt-14">
             <div className="font-display text-[40px] uppercase leading-[1.05] sm:text-[56px]">
               <span className="font-romance italic font-normal lowercase">sent.</span>
             </div>
@@ -92,8 +90,7 @@ export function Contact() {
           </div>
         )}
 
-        {/* footer */}
-        <div className="mt-28 grid grid-cols-1 gap-12 border-t border-ink/30 pt-12 lg:mt-40 lg:grid-cols-3 lg:gap-16">
+        <div className="mt-20 grid grid-cols-1 gap-12 border-t border-ink/30 pt-10 lg:mt-28 lg:grid-cols-3 lg:gap-16">
           <FooterCol label="Email">
             <a className="block hover:underline" href="mailto:info@newtone.design">
               info@newtone.<br />design
@@ -113,18 +110,12 @@ export function Contact() {
           </FooterCol>
         </div>
 
-        <div className="mt-24 flex flex-col items-start justify-between gap-3 border-t border-ink/30 pt-6 font-mono text-[10px] uppercase tracking-eyebrow text-ink/70 sm:flex-row sm:items-center">
+        <div className="mt-16 flex flex-col items-start justify-between gap-3 border-t border-ink/30 pt-6 font-mono text-[10px] uppercase tracking-eyebrow text-ink/70 sm:flex-row sm:items-center">
           <span>© 2026 Newtone Creative Labs Pvt. Ltd.</span>
           <span className="flex gap-6">
-            <a href="https://behance.net" className="hover:text-ink">
-              Behance →
-            </a>
-            <a href="https://linkedin.com" className="hover:text-ink">
-              LinkedIn →
-            </a>
-            <a href="https://instagram.com" className="hover:text-ink">
-              Instagram →
-            </a>
+            <a href="https://behance.net" className="hover:text-ink">Behance →</a>
+            <a href="https://linkedin.com" className="hover:text-ink">LinkedIn →</a>
+            <a href="https://instagram.com" className="hover:text-ink">Instagram →</a>
           </span>
         </div>
       </div>

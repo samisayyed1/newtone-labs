@@ -1,7 +1,7 @@
 "use client";
 
 import { useReveal } from "@/components/motion/RevealHooks";
-import { RedSquare, RevealLine, SectionHead } from "@/components/ui/SectionHead";
+import { RevealLine, SectionHead } from "@/components/ui/SectionHead";
 
 const ROWS = [
   {
@@ -57,7 +57,7 @@ export function WhyUs() {
               <RevealLine>
                 with us <span className="text-blood">for years</span>
               </RevealLine>
-              <RedSquare />
+              <span className="text-blood">.</span>
             </span>
           </h2>
         </SectionHead>

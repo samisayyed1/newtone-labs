@@ -1,7 +1,48 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useReveal } from "@/components/motion/RevealHooks";
-import { RedSquare, RevealLine, SectionHead } from "@/components/ui/SectionHead";
+import { RevealLine, SectionHead } from "@/components/ui/SectionHead";
+
+const STATS = [
+  { value: 3, suffix: "", red: true, label: "Designers in-house. No contractors, no overflow shop." },
+  { value: 9, suffix: "+", label: "Combined years of design experience on the team." },
+  { value: 250, suffix: "h", label: "Average monthly output per active retainer." },
+  { value: 12, suffix: "", label: "Active client accounts across four time zones." },
+];
+
+function Counter({ to, suffix }: { to: number; suffix: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.textContent = `${to}${suffix}`;
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          const start = performance.now();
+          const dur = 1100;
+          const tick = (now: number) => {
+            const t = Math.min(1, (now - start) / dur);
+            const eased = 1 - Math.pow(1 - t, 4);
+            el.textContent = `${Math.round(to * eased)}${t === 1 ? suffix : ""}`;
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.5 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [to, suffix]);
+  return <span ref={ref}>0</span>;
+}
 
 export function About() {
   const ref = useReveal<HTMLElement>();
@@ -18,7 +59,7 @@ export function About() {
                 <span className="font-romance font-normal italic lowercase">long</span>
               </RevealLine>{" "}
               <RevealLine>memory</RevealLine>
-              <RedSquare />
+              <span className="text-blood">.</span>
             </span>
           </h2>
         </SectionHead>
@@ -43,6 +84,22 @@ export function About() {
               We grow only when a specific kind of work calls for a specific kind of designer. Slowly, on purpose.
             </p>
           </div>
+        </div>
+
+        {/* stats — embedded right under the manifesto so there's no dead space */}
+        <div className="mt-14 grid gap-10 border-t border-ink/10 pt-10 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-12 lg:pt-12">
+          {STATS.map((s, i) => (
+            <div key={i} className="reveal-up" style={{ transitionDelay: `${i * 60}ms` }}>
+              <div
+                className={`font-display uppercase leading-[0.9] tracking-[-0.02em] text-[clamp(56px,8vw,112px)] ${
+                  s.red ? "text-blood" : "text-ink"
+                }`}
+              >
+                <Counter to={s.value} suffix={s.suffix} />
+              </div>
+              <p className="mt-4 max-w-[28ch] text-[13px] leading-[1.55] text-whisper">{s.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

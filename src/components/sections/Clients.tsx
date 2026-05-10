@@ -1,7 +1,7 @@
 "use client";
 
 import { useReveal } from "@/components/motion/RevealHooks";
-import { RedSquare, RevealLine, SectionHead } from "@/components/ui/SectionHead";
+import { RevealLine, SectionHead } from "@/components/ui/SectionHead";
 
 type Client = {
   name: [string, string?];
@@ -45,7 +45,7 @@ export function Clients() {
               <RevealLine>
                 <span className="text-blood">followers</span>
               </RevealLine>
-              <RedSquare />
+              <span className="text-blood">.</span>
             </span>
           </h2>
         </SectionHead>

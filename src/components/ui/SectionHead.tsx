@@ -39,6 +39,7 @@ export function RevealLine({ children, romance = false, className = "" }: LinePr
   );
 }
 
-export function RedSquare({ className = "" }: { className?: string }) {
-  return <span className={`redsq ${className}`} aria-hidden />;
+/** Kept for compatibility — renders nothing. The previous square punctuation has been removed. */
+export function RedSquare() {
+  return null;
 }

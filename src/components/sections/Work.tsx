@@ -1,7 +1,7 @@
 "use client";
 
 import { useReveal } from "@/components/motion/RevealHooks";
-import { RedSquare, RevealLine, SectionHead } from "@/components/ui/SectionHead";
+import { RevealLine, SectionHead } from "@/components/ui/SectionHead";
 
 const WORK = [
   { span: "lg:col-span-7", ratio: "16/10", title: "State of Fraud Report 2025", meta: "Arkose Labs · Whitepaper", num: "W—01 / 06" },
@@ -30,7 +30,7 @@ export function Work() {
               <RevealLine>
                 clients <span className="text-blood">we love</span>
               </RevealLine>
-              <RedSquare />
+              <span className="text-blood">.</span>
             </span>
           </h2>
         </SectionHead>

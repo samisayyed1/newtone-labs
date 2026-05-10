@@ -1,7 +1,7 @@
 "use client";
 
 import { useReveal } from "@/components/motion/RevealHooks";
-import { RedSquare, RevealLine, SectionHead } from "@/components/ui/SectionHead";
+import { RevealLine, SectionHead } from "@/components/ui/SectionHead";
 
 const STEPS = [
   { num: "01", title: "Brief", desc: "30-min kickoff. We map the deliverables, channels and dates onto a shared sprint." },
@@ -28,7 +28,7 @@ export function Process() {
               <RevealLine>
                 <span className="text-blood">weekly</span>
               </RevealLine>
-              <RedSquare />
+              <span className="text-blood">.</span>
             </span>
           </h2>
         </SectionHead>
