@@ -105,7 +105,7 @@ export function Contact() {
             <p className="text-[16px] font-medium leading-[1.5] normal-case text-cream">
               Newtone Creative Labs<br />
               Nerul, Navi Mumbai 400706<br />
-              India · IST (UTC+5:30)
+              India
             </p>
           </FooterCol>
         </div>

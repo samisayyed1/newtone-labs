@@ -5,7 +5,6 @@ import { RevealLine, SectionHead } from "@/components/ui/SectionHead";
 
 type Step = {
   num: string;
-  day: string;
   title: string;
   duration: string;
   desc: string;
@@ -14,30 +13,26 @@ type Step = {
 const STEPS: Step[] = [
   {
     num: "01",
-    day: "Mon",
     title: "Brief",
     duration: "30 min",
-    desc: "30-min kickoff. We map the deliverables, channels and dates onto a shared sprint.",
+    desc: "Kickoff call. We map the deliverables, channels and dates onto a shared sprint.",
   },
   {
     num: "02",
-    day: "Tue",
     title: "Draft",
     duration: "24–48 hrs",
     desc: "First-pass concepts within 24–48 hours. Real layouts, real copy slots, no lorem.",
   },
   {
     num: "03",
-    day: "Thu",
     title: "Refine",
     duration: "2 rounds",
     desc: "Two structured rounds. We track changes in your tool of choice — Figma, Slides or Slack.",
   },
   {
     num: "04",
-    day: "Fri",
     title: "Ship",
-    duration: "Same day",
+    duration: "Same cycle",
     desc: "Source files, exports, and any motion variants. Archived and named the way your team likes.",
   },
 ];
@@ -65,31 +60,12 @@ export function Process() {
           </h2>
         </SectionHead>
 
-        {/* Sprint-week label */}
-        <div className="mt-12 flex items-center justify-between font-mono text-[10px] uppercase tracking-eyebrow text-whisper lg:mt-16">
-          <span>Sprint week — typical cadence</span>
-          <span className="hidden sm:inline">Mon → Fri</span>
-        </div>
-
         {/* Timeline + steps */}
-        <div className="relative mt-6 lg:mt-8">
-          {/* Day labels (desktop only — sit just above the line) */}
-          <div className="relative hidden lg:grid lg:grid-cols-4">
-            {STEPS.map((s) => (
-              <div key={s.num} className="pl-0 pr-6">
-                <span className="font-mono text-[11px] uppercase tracking-eyebrow text-whisper">
-                  {s.day}
-                </span>
-              </div>
-            ))}
-          </div>
-
+        <div className="relative mt-12 lg:mt-16">
           {/* Connector line + dots (desktop only) */}
-          <div className="relative mt-4 hidden h-3 lg:block">
-            {/* base line — draws left to right when section enters */}
+          <div className="relative hidden h-3 lg:block">
             <div className="absolute left-1.5 right-1.5 top-1/2 h-px -translate-y-1/2 bg-ink/15" />
             <div className="process-line absolute left-1.5 right-1.5 top-1/2 h-[1.5px] -translate-y-1/2 bg-blood" />
-            {/* dots */}
             <div className="relative grid h-full grid-cols-4">
               {STEPS.map((s, i) => (
                 <div key={s.num} className="relative">
@@ -103,18 +79,13 @@ export function Process() {
           </div>
 
           {/* Step content */}
-          <div className="mt-10 grid grid-cols-1 gap-y-12 gap-x-0 sm:grid-cols-2 sm:gap-x-8 lg:mt-8 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-8 lg:mt-10 lg:grid-cols-4 lg:gap-x-0">
             {STEPS.map((s, i) => (
               <div
                 key={s.num}
                 className="reveal-up relative pr-6 lg:pr-8"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                {/* mobile day label */}
-                <span className="mb-3 block font-mono text-[10px] uppercase tracking-eyebrow text-whisper lg:hidden">
-                  {s.day}
-                </span>
-
                 <div className="flex items-baseline gap-3">
                   <span className="font-mono text-[11px] uppercase tracking-eyebrow text-blood">{s.num}</span>
                   <span className="font-mono text-[10px] uppercase tracking-eyebrow text-whisper">
@@ -128,19 +99,22 @@ export function Process() {
 
                 <p className="mt-4 max-w-[30ch] text-[14px] leading-[1.65] text-whisper">{s.desc}</p>
 
-                {/* tiny progress preview — small bars representing the day's work */}
-                <div className="mt-5 flex items-end gap-1">
-                  {[0, 1, 2, 3, 4].map((b) => (
+                {/* Activity histogram — bars breathe continuously, never settle */}
+                <div className="mt-6 flex h-8 items-end gap-1.5" aria-hidden>
+                  {[0, 1, 2, 3, 4, 5, 6].map((b) => (
                     <span
                       key={b}
-                      className="block w-3 origin-bottom rounded-[1px] bg-ink/15"
+                      className={`process-bar block w-2 origin-bottom rounded-[1px] ${
+                        b === 3 ? "bg-blood" : "bg-ink/45"
+                      }`}
                       style={{
-                        height: [10, 16, 22, 14, 8][b] + (i % 2 === 0 ? 0 : 2) + "px",
-                        animationDelay: `${i * 100 + b * 60}ms`,
+                        height: "100%",
+                        animationDelay: `${i * 0.2 + b * 0.14}s`,
+                        animationDuration: `${1.8 + (b % 4) * 0.35}s`,
                       }}
                     />
                   ))}
-                  <span className="ml-2 font-mono text-[9px] uppercase tracking-eyebrow text-whisper">
+                  <span className="ml-3 self-center font-mono text-[9px] uppercase tracking-eyebrow text-whisper">
                     Cycle {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -149,14 +123,14 @@ export function Process() {
           </div>
         </div>
 
-        {/* Closer caption */}
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 pt-6 font-mono text-[10px] uppercase tracking-eyebrow text-whisper lg:mt-16">
+        {/* Closer — no day or timezone references */}
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 pt-6 font-mono text-[10px] uppercase tracking-eyebrow text-whisper lg:mt-16">
           <span>
-            Loop on for <span className="text-ink">52</span> weeks a year.
+            An <span className="text-ink">always-on</span> cadence.
           </span>
           <span className="inline-flex items-center gap-2 text-blood">
             <span className="block h-[6px] w-[6px] animate-pulse rounded-full bg-blood" />
-            Studio open · Mon–Fri · IST
+            12 active retainers
           </span>
         </div>
       </div>
@@ -180,11 +154,29 @@ export function Process() {
           border-color: #e63946;
           transform: translateY(-50%) scale(1.15);
         }
+        .process-bar {
+          animation: barBreathe 2.4s ease-in-out infinite;
+          will-change: transform, opacity;
+        }
+        @keyframes barBreathe {
+          0%, 100% {
+            transform: scaleY(0.32);
+            opacity: 0.55;
+          }
+          50% {
+            transform: scaleY(1);
+            opacity: 1;
+          }
+        }
         @media (prefers-reduced-motion: reduce) {
           .process-line,
           .process-dot {
             transition: none;
             transform: none;
+          }
+          .process-bar {
+            animation: none;
+            transform: scaleY(0.7);
           }
         }
       `}</style>
